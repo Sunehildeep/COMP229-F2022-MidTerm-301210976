@@ -2,7 +2,6 @@
 let express = require("express");
 let router = express.Router();
 let mongoose = require("mongoose");
-var prompt = require('prompt-sync')();
 
 // define the product model
 let product = require("../models/products");
