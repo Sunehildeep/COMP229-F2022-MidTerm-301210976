@@ -1,0 +1,71 @@
+<% include ../partials/header.ejs %>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <h3>Product details</h3>
+      <!-- ------------------------ -->
+      <!-- Fixed the add button with href to /products/add -->
+      <!-- ------------------------ -->
+      <a href="/products/add" class="btn btn-primary"
+        ><i class="fa fa-plus"></i> Add a product</a
+      >
+      <br />
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Product id</th>
+              <th class="text-center">Product name</th>
+              <th class="text-center">Description</th>
+              <th class="text-center">Price</th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Template Row -->
+            <% for (let count = 0; count < products.length; count++) { %>
+            <tr>
+              <td><%= products[count].Productid %></td>
+              <td class="text-center"><%= products[count].Productname %></td>
+              <td class="text-center"><%= products[count].Description %></td>
+              <td class="text-center"><%= products[count].Price %></td>
+
+              <!-- Edit button for each row -->
+              <td class="text-center">
+                <a href="/products/<%=products[count]._id%>">
+                <i></i> Edit</a>
+              </td>
+
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+
+      </div>
+
+      <!--- Added the delete button with deleteRange function -->
+      <a onclick="deleteRange();" class="btn btn-warning btn-sm">
+        <i class="fas fa-trash"></i> Delete</a>
+
+      <!--- deleteRange function that prompts the user for a range -->
+      <script>
+        function deleteRange() {
+          var range = prompt("Please enter the price range in this format (Min-Max): ");
+          var link = document.location.origin+'/products/delete/'+range;
+
+          window.location.href = link;
+        }
+      </script>
+  </main>
+  
+
+      <div class="col-md-offset-1 col-md-10 text-center">
+        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer.ejs %>
