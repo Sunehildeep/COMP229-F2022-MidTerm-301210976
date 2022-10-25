@@ -1,3 +1,9 @@
+/*
+File name: products.js
+Author: Sunehildeep
+Student ID: 301210976
+Web App Name: COMP229- F2022-301210976
+*/
 // modules required for routing
 let express = require("express");
 let router = express.Router();
